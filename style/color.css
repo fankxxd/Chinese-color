@@ -1,0 +1,133 @@
+.reset {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #F1F1F1;
+	transition: .8s;
+	/*cursor: url(../imgs/sun.ico), auto;*/
+}
+
+.nav-top {
+	font-family: "楷体";
+	width: 100%;
+	position: fixed;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	height: 60px;
+	line-height: 60px;
+	background: #FAFAFA;
+	box-shadow: 0 1px 3px rgba(0, 37, 55, .05);
+	font-size: 30px;
+	text-align: center;
+	color: #212121;
+	font-weight: 700;
+	transition: .8s;
+}
+
+.toTop {
+	width: 60px;
+	height: 60px;
+	position: fixed;
+	z-index: 20;
+	right: 5%;
+	bottom: -10%;
+	background: #F1F1F1;
+	border-radius: 50%;
+	box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.5);
+	transition: .6s;
+	color: #212121;
+}
+
+span {
+	transition: .3s;
+}
+
+.box {
+	margin: 0;
+	padding: 2px 0;
+	background: #F6F6F6;
+	transition: all .6s;
+	box-shadow: 0 1px 3px rgba(0, 37, 55, .05);
+}
+
+@media(min-width: 640px) {
+	.content {
+		width: 70%;
+		margin: 0 auto;
+	}
+}
+
+@media(max-width: 640px) {
+	.content {
+		width: 100%;
+	}
+}
+
+.list {
+	list-style: none;
+	width: 83%;
+	margin: 80px auto 0;
+}
+
+.items {
+	font-family: "微软雅黑";
+	font-size: 18px;
+	color: #212121;
+	width: 100%;
+	height: 60px;
+	margin-bottom: 10px;
+	padding-left: 10px;
+	padding-top: 6px;
+	box-sizing: border-box;
+	box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
+	transition: all .5s linear;
+	text-transform: uppercase;
+	border-radius: 3px;
+	border-left: solid 10px #F1F1F1;
+	position: relative;	
+}
+
+.dot {
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	top: 15px;
+	right: 20px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 1);
+	box-shadow: inset 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
+	transition: .6s;
+}
+
+.items:hover {
+	/*border-top: solid 1px #F1F1F1;*/
+	border-left: solid 0px #F1F1F1;
+	box-shadow: none;
+	color: #f6f6f6;
+	text-shadow: 1px 1px 1px #212121;
+}
+
+.items:hover .dot {
+	transform: scale(0);
+}
+
+.ripple {
+	background-color: rgba(255, 255, 255, 1);
+	animation: ripple 2s forwards cubic-bezier(0, 0, 0.2, 1);
+}
+
+@keyframes ripple {
+	0% {
+		transform: scale(0);
+		opacity: 1;
+	}
+	80% {
+		transform: scale(1);
+	}
+	100% {
+		opacity: 0;
+	}
+}
