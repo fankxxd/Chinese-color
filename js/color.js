@@ -26,7 +26,7 @@ onload = function() {
 				for(let i = 0; i < obj.length; i++) {
 					var li = document.createElement('li');
 					var color = '#' + obj[i].color;
-					li.innerHTML = obj[i].name + '<br/>' + color + '<div class="dot"></div>';
+					li.innerHTML = obj[i].name + '<br/><span class="colorText">' + color + '</span><div class="dot"></div>';
 					li.className += 'items';
 					li.style.background = color;
 					list.appendChild(li);
@@ -49,7 +49,7 @@ onload = function() {
 };
 //波纹 插件形式封装
 function Ripple(el){
-		console.log(this)
+		//console.log(this)
 	this.element = el;
 	el.addEventListener('click', this.run.bind(this), false);
 }
