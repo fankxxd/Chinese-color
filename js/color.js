@@ -1,6 +1,6 @@
 var list = document.querySelector('.list');
 var toTop = document.querySelector('.toTop');
-var content = document.querySelector('.content');
+var content = document.querySelector('.box');
 var nav = document.querySelector('.nav-top');
 var timer;
 var flag = true;
@@ -130,8 +130,8 @@ myEvent(nav,'click',function(){
 onscroll = function() {
 	var y = document.body.scrollTop;
 	if(y>=30){
-		nav.style.boxShadow = "0px 1px 4px 1px rgba(0, 0, 0, 0.5)";
-		toTop.style.bottom = "2%";
+		nav.style.boxShadow = "0px 0px 4px 1px rgba(0, 0, 0, 0.5)";
+		toTop.style.bottom = "22px";
 	}else{
 		nav.style.boxShadow = "";
 		toTop.style.bottom = "";
