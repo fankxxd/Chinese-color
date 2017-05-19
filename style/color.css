@@ -41,9 +41,9 @@ body {
 	color: #212121;
 }
 
-span {
+/*span {
 	transition: .3s;
-}
+}*/
 
 .box {
 	margin: 0;
@@ -114,11 +114,14 @@ span {
 	transform: scale(0);
 }
 
-.ripple {
-	background-color: rgba(255, 255, 255, 1);
+.rippleA {
+	background-color: #FAFAFA;
 	animation: ripple 2s forwards cubic-bezier(0, 0, 0.2, 1);
 }
-
+.rippleB {
+	background-color: #212121;
+	animation: ripple 2s forwards cubic-bezier(0, 0, 0.2, 1);
+}
 @keyframes ripple {
 	0% {
 		transform: scale(0);

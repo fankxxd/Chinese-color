@@ -3,6 +3,7 @@ var toTop = document.querySelector('.toTop');
 var content = document.querySelector('.content');
 var nav = document.querySelector('.nav-top');
 var timer;
+var flag = true;
 onload = function() {
 	var xhr;
 	if(window.XMLHttpRequest) {
@@ -46,8 +47,9 @@ onload = function() {
 		}
 	}
 };
-//涟漪纹
+//波纹 插件封装
 function Ripple(el){
+		console.log(this)
 	this.element = el;
 	el.addEventListener('click', this.run.bind(this), false);
 }
@@ -83,7 +85,11 @@ Ripple.prototype = {
         ripple.style.left = (ev.pageX - offsetInfo.left - rippleR) + 'px';
         //document.body.scrollTop 控制定位
         ripple.style.top = (ev.pageY - document.body.scrollTop - offsetInfo.top - rippleR) + 'px';
-        ripple.className = 'ripple';
+        if(flag){
+        	ripple.className = 'rippleB';
+        }else{
+        	ripple.className = 'rippleA';
+        }
         rippleCont.appendChild(ripple);
         ripple.addEventListener('animationend', function(){
             rippleCont.remove();
@@ -103,7 +109,6 @@ function myEvent(obj,ev,fn){
 		obj.addEventListener(ev,fn,false);
 	}
 }
-var flag = true;
 myEvent(nav,'click',function(){
 	let tip = document.querySelector('.tip')
 	if(flag){
@@ -120,7 +125,7 @@ myEvent(nav,'click',function(){
 	}
 });
 
-//返回btn的显示隐藏
+//返回btn的显示/隐藏
 onscroll = function() {
 	var y = document.body.scrollTop;
 	if(y>=30){
@@ -145,17 +150,3 @@ toTop.onclick = function() {
 		document.body.scrollTop = now + speed
 	}, 10)
 }
-
-//		function launchFullScreen(element) {  
-//			console.log(1);
-//if(element.requestFullScreen) {  
-//  element.requestFullScreen();  
-//} else if(element.mozRequestFullScreen) {  
-//  element.mozRequestFullScreen();  
-//} else if(element.webkitRequestFullScreen) {  
-//  element.webkitRequestFullScreen();  
-//}  
-//}  
-//
-//// 启动全屏模式  
-//launchFullScreen(document.documentElement);
