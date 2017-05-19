@@ -150,3 +150,8 @@ toTop.onclick = function() {
 		document.body.scrollTop = now + speed
 	}, 10)
 }
+
+//跳转回Git
+function toGithub () {
+	window.location = 'https://github.com/fankxxd';
+}
