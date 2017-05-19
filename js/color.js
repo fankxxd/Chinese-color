@@ -61,6 +61,7 @@ Ripple.prototype = {
 		if(ripplerContainer){
 			ripplerContainer.remove();
 		}
+		//波纹容器
 		var rippleCont = document.createElement('div');
 		var rContStyle = rippleCont.style;
 		rContStyle.position = 'fixed';
@@ -75,7 +76,7 @@ Ripple.prototype = {
         
         //最大波纹半径
         var rippleR = 1.1*Math.max(offsetInfo.width,offsetInfo.height) ;
-        
+        //波纹
         var ripple = document.createElement('div');
         var rStyle = ripple.style;
         rStyle.position = 'absolute';
@@ -139,12 +140,15 @@ onscroll = function() {
 }
 //返回顶部
 toTop.onclick = function() {
+	toTop.style.animation = 'shake .4s 1';
 	clearInterval(timer);
 	timer = setInterval(function() {
 		var now = document.documentElement.scrollTop || document.body.scrollTop;
 		var speed = (0 - now) / 10;
 		if(now == 0) {
 			clearInterval(timer);
+			toTop.style.animation = '';
+			
 		}
 		document.documentElement.scrollTop = now + speed
 		document.body.scrollTop = now + speed

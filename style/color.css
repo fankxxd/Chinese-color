@@ -27,6 +27,7 @@ body {
 	color: #212121;
 	/*font-weight: 700;*/
 	transition: .8s;
+	cursor: default;
 }
 
 .toTop {
@@ -43,6 +44,20 @@ body {
 	color: #212121;
 }
 
+@keyframes shake{
+	0% {
+		transform: rotate3d(0, 0, 1, 0deg);
+	}
+	50% {
+		transform: rotate3d(0, 0, 1, 30deg);
+	}
+	75% {
+		transform: rotate3d(0, 0, 1, -15deg);
+	}
+	100% {
+		transform: rotate3d(0, 0, 1, 6deg);
+	}
+}
 .box {
 	margin: 0;
 	padding: 2px 0;
@@ -158,6 +173,7 @@ body {
 	height: 29px;
 	transition: all .4s;
 	border-bottom: 1px solid #005CAF;
+	cursor: pointer;
 }
 .footerText:hover{
 	color: #005caf;
