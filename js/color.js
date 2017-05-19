@@ -47,7 +47,7 @@ onload = function() {
 		}
 	}
 };
-//波纹 插件封装
+//波纹 插件形式封装
 function Ripple(el){
 		console.log(this)
 	this.element = el;
