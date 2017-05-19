@@ -30,6 +30,13 @@ body {
 	cursor: default;
 }
 
+.cav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
 .toTop {
 	width: 60px;
 	height: 60px;
@@ -44,7 +51,7 @@ body {
 	color: #212121;
 }
 
-@keyframes shake{
+@keyframes shake {
 	0% {
 		transform: rotate3d(0, 0, 1, 0deg);
 	}
@@ -58,6 +65,7 @@ body {
 		transform: rotate3d(0, 0, 1, 6deg);
 	}
 }
+
 .box {
 	margin: 69px auto 19px;
 	padding: 12px 0 2px;
@@ -100,11 +108,13 @@ body {
 	text-transform: uppercase;
 	border-radius: 3px;
 	border-left: solid 10px #424242;
-	position: relative;	
+	position: relative;
 }
+
 .tip {
 	font-size: 16px;
 }
+
 .dot {
 	width: 30px;
 	height: 30px;
@@ -116,11 +126,13 @@ body {
 	box-shadow: inset 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
 	transition: .6s;
 }
+
 .colorText {
 	font-size: 16px;
 	opacity: 0;
-	transition:opacity .6s;
+	transition: opacity .6s;
 }
+
 .items:hover {
 	/*border-top: solid 1px #F1F1F1;*/
 	border-left: solid 0px #424242;
@@ -128,9 +140,11 @@ body {
 	color: #f6f6f6;
 	text-shadow: 1px 1px 1px #212121;
 }
-.items:hover .colorText{
+
+.items:hover .colorText {
 	opacity: 1;
 }
+
 .items:hover .dot {
 	transform: scale(0);
 }
@@ -139,10 +153,12 @@ body {
 	background-color: #FAFAFA;
 	animation: ripple 2s forwards cubic-bezier(0, 0, 0.2, 1);
 }
+
 .rippleB {
 	background-color: #212121;
 	animation: ripple 2s forwards cubic-bezier(0, 0, 0.2, 1);
 }
+
 @keyframes ripple {
 	0% {
 		transform: scale(0);
@@ -156,7 +172,7 @@ body {
 	}
 }
 
-.footer{
+.footer {
 	width: 100%;
 	height: 50px;
 	background: #FAFAFA;
@@ -165,7 +181,8 @@ body {
 	padding-left: 3%;
 	box-sizing: border-box;
 }
-.footerText{
+
+.footerText {
 	display: inline-block;
 	color: #212121;
 	width: 10px;
@@ -174,7 +191,8 @@ body {
 	border-bottom: 1px solid #005CAF;
 	cursor: pointer;
 }
-.footerText:hover{
+
+.footerText:hover {
 	color: #005caf;
 	width: 69px;
 }
