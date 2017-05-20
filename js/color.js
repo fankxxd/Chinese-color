@@ -49,7 +49,6 @@ onload = function() {
 };
 //波纹 插件形式封装
 function Ripple(el) {
-	s
 	this.element = el;
 	el.addEventListener('click', this.run.bind(this), false);
 }
@@ -171,27 +170,31 @@ window.requestAnimationFrame = (function() {
 })();
 //初始角度参数为0
 var n = 0;
-var lines = ['rgba(242,85,0,1)', 'rgba(65,105,225,1)', 'rgba(0,255,127,1)'];
+var lines = ['rgba(242,85,0,.75)', 'rgba(65,105,225,.75)', 'rgba(0,255,127,.75)'];
 
 function loop() {
 	//清空canvas
 	ctx.clearRect(0, 0, cav.width, cav.height);
 	for(var i = 0; i < lines.length; i++) {
-		ctx.strokeStyle = lines[i];
-		ctx.lineWidth = 3;
+		ctx.fillStyle = lines[i];
+		ctx.lineWidth = 1;
 		//角度
 		var angle = (++n + 75 * i) * Math.PI / 180
-		var lHeight = Math.sin(angle) * 100;
-		var rHeight = Math.cos(angle) * 100;
+		var lHeight = Math.sin(angle) * 30;
+		var rHeight = Math.cos(angle) * 30;
 		var y = cav.height;
 		var x = cav.width;
 		//开始绘制
 		ctx.beginPath();
-		ctx.moveTo(0, y / 2 + lHeight); //左上
+		ctx.moveTo(0, lHeight+10); //左下
 		//曲线
-		ctx.bezierCurveTo(x / 2, y / 2 + lHeight + 10, x / 2, y / 2 + rHeight - 5, x, y / 2 + rHeight);
+		ctx.bezierCurveTo(x / 2, y / 2 + lHeight + 50, x / 2, y / 2 + rHeight - 999, x, 1);
+		ctx.bezierCurveTo(x / 2, y / 2 + lHeight -50, x / 2, y / 2 + rHeight + 40, 0, rHeight);
+		//ctx.lineTo(x, 0);
+		//ctx.lineTo(0,0);
+		ctx.closePath();
 		//填充颜色
-		ctx.stroke();
+		ctx.fill();
 	}
 	//让cav动起来
 	requestAnimationFrame(loop);
