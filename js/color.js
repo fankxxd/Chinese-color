@@ -38,7 +38,7 @@ onload = function() {
 						var bgcolor = this.style.background;
 						content.style.background = bgcolor;
 						toTop.style.background = bgcolor;
-						for(let i = 0; i < dots.length; i++){
+						for(let i = 0; i < dots.length; i++) {
 							dots[i].style.background = bgcolor;
 						}
 					}
@@ -48,17 +48,16 @@ onload = function() {
 	}
 };
 //波纹 插件形式封装
-function Ripple(el){
-		//console.log(this)
+function Ripple(el) {
+	//console.log(this)
 	this.element = el;
 	el.addEventListener('click', this.run.bind(this), false);
 }
-
 Ripple.prototype = {
-	run:function(ev){
+	run: function(ev) {
 		var ripplerContainer = this.element.querySelector('.ripple-container');
 		var offsetInfo = this.element.getBoundingClientRect();
-		if(ripplerContainer){
+		if(ripplerContainer) {
 			ripplerContainer.remove();
 		}
 		//波纹容器
@@ -66,59 +65,59 @@ Ripple.prototype = {
 		var rContStyle = rippleCont.style;
 		rContStyle.position = 'fixed';
 		rContStyle.zIndex = 50;
-		rContStyle.width = offsetInfo.width +'px';
+		rContStyle.width = offsetInfo.width + 'px';
 		rContStyle.height = offsetInfo.height + 'px';
 		rContStyle.left = offsetInfo.left + 'px';
-        rContStyle.top = offsetInfo.top + 'px';
-        rippleCont.className = 'ripple-container';
-        rContStyle.overflow = 'hidden';
-        this.element.appendChild(rippleCont);
-        
-        //最大波纹半径
-        var rippleR = 1.1*Math.max(offsetInfo.width,offsetInfo.height) ;
-        //波纹
-        var ripple = document.createElement('div');
-        var rStyle = ripple.style;
-        rStyle.position = 'absolute';
-        ripple.style.width = 2*rippleR + 'px';
-        ripple.style.height = 2*rippleR + 'px';
-        ripple.style.borderRadius = '50%';
-        ripple.style.left = (ev.pageX - offsetInfo.left - rippleR) + 'px';
-        //document.body.scrollTop 控制定位
-        ripple.style.top = (ev.pageY - document.body.scrollTop - offsetInfo.top - rippleR) + 'px';
-        if(flag){
-        	ripple.className = 'rippleB';
-        }else{
-        	ripple.className = 'rippleA';
-        }
-        rippleCont.appendChild(ripple);
-        ripple.addEventListener('animationend', function(){
-            rippleCont.remove();
-        }.bind(this), false);
+		rContStyle.top = offsetInfo.top + 'px';
+		rippleCont.className = 'ripple-container';
+		rContStyle.overflow = 'hidden';
+		this.element.appendChild(rippleCont);
+
+		//最大波纹半径
+		var rippleR = 1.1 * Math.max(offsetInfo.width, offsetInfo.height);
+		//波纹
+		var ripple = document.createElement('div');
+		var rStyle = ripple.style;
+		rStyle.position = 'absolute';
+		ripple.style.width = 2 * rippleR + 'px';
+		ripple.style.height = 2 * rippleR + 'px';
+		ripple.style.borderRadius = '50%';
+		ripple.style.left = (ev.pageX - offsetInfo.left - rippleR) + 'px';
+		//document.body.scrollTop 控制定位
+		ripple.style.top = (ev.pageY - document.body.scrollTop - offsetInfo.top - rippleR) + 'px';
+		if(flag) {
+			ripple.className = 'rippleB';
+		} else {
+			ripple.className = 'rippleA';
+		}
+		rippleCont.appendChild(ripple);
+		ripple.addEventListener('animationend', function() {
+			rippleCont.remove();
+		}.bind(this), false);
 	}
 }
 
 Array.prototype.forEach.call(document.querySelectorAll('[data-ripple]'), function(element) {
-				// 找到所有绑定元素
-				new Ripple(element); //添加效果
-			});
+	// 找到所有绑定元素
+	new Ripple(element); //添加效果
+});
 //变色
-function myEvent(obj,ev,fn){
-	if(obj.attachEvent){
-		obj.attachEvent('on'+ev,fn);
-	}else{
-		obj.addEventListener(ev,fn,false);
+function myEvent(obj, ev, fn) {
+	if(obj.attachEvent) {
+		obj.attachEvent('on' + ev, fn);
+	} else {
+		obj.addEventListener(ev, fn, false);
 	}
 }
-myEvent(nav,'click',function(){
+myEvent(nav, 'click', function() {
 	let tip = document.querySelector('.tip')
-	if(flag){
+	if(flag) {
 		nav.style.background = '#212121';
 		document.body.style.background = '#424242';
 		nav.style.color = '#FFFFFF';
 		tip.style.opacity = 0;
 		flag = !flag;
-	}else{
+	} else {
 		nav.style.background = '';
 		document.body.style.background = '';
 		nav.style.color = '';
@@ -129,13 +128,13 @@ myEvent(nav,'click',function(){
 //返回btn的显示/隐藏
 onscroll = function() {
 	var y = document.body.scrollTop;
-	if(y>=30){
+	if(y >= 30) {
 		nav.style.boxShadow = "0px 0px 4px 1px rgba(0, 0, 0, 0.5)";
 		toTop.style.bottom = "22px";
-	}else{
+	} else {
 		nav.style.boxShadow = "";
 		toTop.style.bottom = "";
-		
+
 	}
 }
 //返回顶部
@@ -148,7 +147,7 @@ toTop.onclick = function() {
 		if(now == 0) {
 			clearInterval(timer);
 			toTop.style.animation = '';
-			
+
 		}
 		document.documentElement.scrollTop = now + speed
 		document.body.scrollTop = now + speed
@@ -156,6 +155,53 @@ toTop.onclick = function() {
 }
 
 //跳转回Git
-function toGithub () {
+function toGithub() {
 	window.location = 'https://github.com/fankxxd';
 }
+
+//canvas动画
+var cav = document.querySelector('.cav');
+var ctx = cav.getContext('2d');
+cav.width = cav.parentNode.offsetWidth;
+//		cav.width = window.innerWidth;
+cav.height = cav.parentNode.offsetHeight;
+window.requestAnimationFrame = (function() {
+	return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame() || function(callback) {
+		window.setTimeout(callback, 1000 / 24);
+	}
+})();
+//初始角度参数为0
+var n = 0;
+var lines = ['rgba(242,85,0,1)', 'rgba(65,105,225,1)', 'rgba(0,255,127,1)'];
+function loop() {
+	//清空canvas
+	ctx.clearRect(0, 0, cav.width, cav.height);
+	//			ctx.fillStyle = 'rgba(0,22,255,0.1)';
+	for(var i = 0; i < lines.length; i++) {
+		ctx.strokeStyle = lines[i];
+		ctx.lineWidth = 3;
+		//角度
+		var angle = (++n + 75 * i) * Math.PI / 180
+		var lHeight = Math.sin(angle) * 100;
+		var rHeight = Math.cos(angle) * 100;
+		//			console.log(lHeight+'.' + rHeight);
+		var y = cav.height;
+		var x = cav.width;
+		//开始绘制
+		ctx.beginPath();
+		ctx.moveTo(0, y / 2 + lHeight); //左上
+		//ctx.lineTo(x, y/2+rHeight);//右上
+		//曲线
+		ctx.bezierCurveTo(x / 2, y / 2 + lHeight + 10, x / 2, y / 2 + rHeight-5, x, y / 2 + rHeight);
+		//ctx.lineTo(x, y);//右下
+		//ctx.lineTo(0, y);//左下
+		//ctx.lineTo(0, y/2+lHeight);
+		//ctx.closePath();
+		//填充颜色
+		//ctx.fill();
+		ctx.stroke();
+	}
+	//让cav动起来
+	requestAnimationFrame(loop);
+};
+loop();
