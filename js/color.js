@@ -7,11 +7,11 @@ var flag = true;
 onload = function() {
 	var xhr;
 	if(window.XMLHttpRequest) {
-		xhr = new XMLHttpRequest
+		xhr = new XMLHttpRequest;
 	} else if(window.ActiveXObject) {
-		xhr = new window.ActiveXObject()
+		xhr = new window.ActiveXObject();
 	} else {
-		alert('sorry...')
+		alert('sorry...');
 	}
 	if(xhr != null) {
 		xhr.open('get', 'color.json', true);
