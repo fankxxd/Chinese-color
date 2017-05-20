@@ -8,7 +8,6 @@ body {
 	padding: 0;
 	background: #F1F1F1;
 	transition: .8s;
-	/*cursor: url(../imgs/sun.ico), auto;*/
 }
 
 .nav-top {
@@ -25,7 +24,6 @@ body {
 	font-size: 30px;
 	text-align: center;
 	color: #212121;
-	/*font-weight: 700;*/
 	transition: .8s;
 	cursor: default;
 }
@@ -134,7 +132,6 @@ body {
 }
 
 .items:hover {
-	/*border-top: solid 1px #F1F1F1;*/
 	border-left: solid 0px #424242;
 	box-shadow: none;
 	color: #f6f6f6;

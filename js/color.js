@@ -49,7 +49,7 @@ onload = function() {
 };
 //波纹 插件形式封装
 function Ripple(el) {
-	//console.log(this)
+	s
 	this.element = el;
 	el.addEventListener('click', this.run.bind(this), false);
 }
@@ -163,7 +163,6 @@ function toGithub() {
 var cav = document.querySelector('.cav');
 var ctx = cav.getContext('2d');
 cav.width = cav.parentNode.offsetWidth;
-//		cav.width = window.innerWidth;
 cav.height = cav.parentNode.offsetHeight;
 window.requestAnimationFrame = (function() {
 	return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame() || function(callback) {
@@ -173,10 +172,10 @@ window.requestAnimationFrame = (function() {
 //初始角度参数为0
 var n = 0;
 var lines = ['rgba(242,85,0,1)', 'rgba(65,105,225,1)', 'rgba(0,255,127,1)'];
+
 function loop() {
 	//清空canvas
 	ctx.clearRect(0, 0, cav.width, cav.height);
-	//			ctx.fillStyle = 'rgba(0,22,255,0.1)';
 	for(var i = 0; i < lines.length; i++) {
 		ctx.strokeStyle = lines[i];
 		ctx.lineWidth = 3;
@@ -184,21 +183,14 @@ function loop() {
 		var angle = (++n + 75 * i) * Math.PI / 180
 		var lHeight = Math.sin(angle) * 100;
 		var rHeight = Math.cos(angle) * 100;
-		//			console.log(lHeight+'.' + rHeight);
 		var y = cav.height;
 		var x = cav.width;
 		//开始绘制
 		ctx.beginPath();
 		ctx.moveTo(0, y / 2 + lHeight); //左上
-		//ctx.lineTo(x, y/2+rHeight);//右上
 		//曲线
-		ctx.bezierCurveTo(x / 2, y / 2 + lHeight + 10, x / 2, y / 2 + rHeight-5, x, y / 2 + rHeight);
-		//ctx.lineTo(x, y);//右下
-		//ctx.lineTo(0, y);//左下
-		//ctx.lineTo(0, y/2+lHeight);
-		//ctx.closePath();
+		ctx.bezierCurveTo(x / 2, y / 2 + lHeight + 10, x / 2, y / 2 + rHeight - 5, x, y / 2 + rHeight);
 		//填充颜色
-		//ctx.fill();
 		ctx.stroke();
 	}
 	//让cav动起来
