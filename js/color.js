@@ -49,7 +49,6 @@ onload = function() {
 };
 //波纹 插件形式封装
 function Ripple(el) {
-	s
 	this.element = el;
 	el.addEventListener('click', this.run.bind(this), false);
 }
