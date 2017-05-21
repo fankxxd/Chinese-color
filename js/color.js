@@ -126,7 +126,7 @@ myEvent(nav, 'click', function() {
 
 //返回btn的显示/隐藏
 onscroll = function() {
-	var y = document.body.scrollTop;
+	var y = document.documentElement.scrollTop || document.body.scrollTop;;
 	if(y >= 30) {
 		nav.style.boxShadow = "0px 0px 4px 1px rgba(0, 0, 0, 0.5)";
 		toTop.style.bottom = "22px";
@@ -148,8 +148,8 @@ toTop.onclick = function() {
 			toTop.style.animation = '';
 
 		}
-		document.documentElement.scrollTop = now + speed
-		document.body.scrollTop = now + speed
+		document.documentElement.scrollTop = now + speed;
+		document.body.scrollTop = now + speed;
 	}, 10)
 }
 
@@ -168,35 +168,40 @@ window.requestAnimationFrame = (function() {
 		window.setTimeout(callback, 1000 / 24);
 	}
 })();
-//初始角度参数为0
 var n = 0;
-var lines = ['rgba(242,85,0,.75)', 'rgba(65,105,225,.75)', 'rgba(0,255,127,.75)'];
+		var lines = ['rgba(242,85,0,.3)', 'rgba(65,105,225,.3)', 'rgba(0,255,127,.3)']
+		function loop() {
+			//清空canvas
+			ctx.clearRect(0, 0, cav.width, cav.height);
+			//			ctx.fillStyle = 'rgba(0,22,255,0.1)';
+			for(var i=0;i<lines.length;i++){
+				ctx.strokeStyle = lines[i];
+				var angle = (++n + 90 * i) * Math.PI / 180
+			
+			ctx.lineWidth = 2;
+			//角度
+//			var angle = (++n) * Math.PI / 180
+			//			console.log(angle);
+			var lHeight = Math.sin(angle) * 5;
+			var rHeight = Math.cos(angle) * 5;
 
-function loop() {
-	//清空canvas
-	ctx.clearRect(0, 0, cav.width, cav.height);
-	for(var i = 0; i < lines.length; i++) {
-		ctx.fillStyle = lines[i];
-		ctx.lineWidth = 1;
-		//角度
-		var angle = (++n + 75 * i) * Math.PI / 180
-		var lHeight = Math.sin(angle) * 30;
-		var rHeight = Math.cos(angle) * 30;
-		var y = cav.height;
-		var x = cav.width;
-		//开始绘制
-		ctx.beginPath();
-		ctx.moveTo(0, lHeight+10); //左下
-		//曲线
-		ctx.bezierCurveTo(x / 2, y / 2 + lHeight + 50, x / 2, y / 2 + rHeight - 999, x, 1);
-		ctx.bezierCurveTo(x / 2, y / 2 + lHeight -50, x / 2, y / 2 + rHeight + 40, 0, rHeight);
-		//ctx.lineTo(x, 0);
-		//ctx.lineTo(0,0);
-		ctx.closePath();
-		//填充颜色
-		ctx.fill();
-	}
-	//让cav动起来
-	requestAnimationFrame(loop);
-};
-loop();
+			var y = cav.height;
+			var x = cav.width;
+			//开始绘制
+			ctx.beginPath();
+			ctx.moveTo(0, y); //左上
+			//ctx.lineTo(x, y/2+rHeight);//右上
+			//曲线
+			ctx.bezierCurveTo(x *(i+1)/ 8,lHeight -60 , x*(1-(1+i)/8), y*.7 + rHeight +90 , x, 0);
+			//			ctx.lineTo(x, y);//右下
+			//			ctx.lineTo(0, y);//左下
+			//ctx.lineTo(0, y/2+lHeight);
+			//			ctx.closePath();
+			//填充颜色
+			//			ctx.fill();
+			ctx.stroke();
+			}
+			//让cav动起来
+			requestAnimationFrame(loop);
+		};
+		loop();
