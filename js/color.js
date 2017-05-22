@@ -161,8 +161,7 @@ function toGithub() {
 //canvas动画
 var cav = document.querySelector('.cav');
 var ctx = cav.getContext('2d');
-cav.width = cav.parentNode.offsetWidth;
-cav.height = cav.parentNode.offsetHeight;
+
 window.requestAnimationFrame = (function() {
 	return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame() || function(callback) {
 		window.setTimeout(callback, 1000 / 24);
@@ -171,6 +170,8 @@ window.requestAnimationFrame = (function() {
 var n = 0;
 		var lines = ['rgba(242,85,0,.3)', 'rgba(65,105,225,.3)', 'rgba(0,255,127,.3)']
 		function loop() {
+			cav.width = cav.parentNode.offsetWidth;
+			cav.height = cav.parentNode.offsetHeight;
 			//清空canvas
 			ctx.clearRect(0, 0, cav.width, cav.height);
 			//			ctx.fillStyle = 'rgba(0,22,255,0.1)';
