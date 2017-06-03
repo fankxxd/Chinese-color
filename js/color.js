@@ -23,7 +23,7 @@ onload = function() {
 					return parseInt(a.color, 16) - parseInt(b.color, 16)
 				});
 				obj.reverse();
-				for(let i = 0; i < obj.length; i++) {
+				for(var i = 0; i < obj.length; i++) {
 					var li = document.createElement('li');
 					var color = '#' + obj[i].color;
 					li.innerHTML = obj[i].name + '<br/><span class="colorText">' + color + '</span><div class="dot"></div>';
@@ -33,12 +33,12 @@ onload = function() {
 				}
 				var items = document.getElementsByTagName('li');
 				var dots = document.getElementsByClassName('dot');
-				for(let i = 0; i < items.length; i++) {
+				for(var i = 0; i < items.length; i++) {
 					items[i].onmouseover = function() {
 						var bgcolor = this.style.background;
 						content.style.background = bgcolor;
 						toTop.style.background = bgcolor;
-						for(let i = 0; i < dots.length; i++) {
+						for(var i = 0; i < dots.length; i++) {
 							dots[i].style.background = bgcolor;
 						}
 					}
@@ -82,7 +82,7 @@ Ripple.prototype = {
 		ripple.style.height = 2 * rippleR + 'px';
 		ripple.style.borderRadius = '50%';
 		ripple.style.left = (ev.pageX - offsetInfo.left - rippleR) + 'px';
-		//document.body.scrollTop 控制定位
+//		document.body.scrollTop 控制定位
 		ripple.style.top = (ev.pageY - document.body.scrollTop - offsetInfo.top - rippleR) + 'px';
 		if(flag) {
 			ripple.className = 'rippleB';
@@ -109,7 +109,7 @@ function myEvent(obj, ev, fn) {
 	}
 }
 myEvent(nav, 'click', function() {
-	let tip = document.querySelector('.tip')
+	var tip = document.querySelector('.tip')
 	if(flag) {
 		nav.style.background = '#212121';
 		document.body.style.background = '#424242';

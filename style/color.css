@@ -194,14 +194,14 @@ body {
 
 .rippleA {
 	background-color: #FAFAFA;
-	-webkit-animation: ripple 2s forwards cubic-bezier(0, 0, 0.2, 1);
-	        animation: ripple 2s forwards cubic-bezier(0, 0, 0.2, 1);
+	-webkit-animation: ripple 1.2s forwards cubic-bezier(0, 0, 0.2, 1);
+	        animation: ripple 1.2s forwards cubic-bezier(0, 0, 0.2, 1);
 }
 
 .rippleB {
 	background-color: #212121;
-	-webkit-animation: ripple 2s forwards cubic-bezier(0, 0, 0.2, 1);
-	        animation: ripple 2s forwards cubic-bezier(0, 0, 0.2, 1);
+	-webkit-animation: ripple 1.2s forwards cubic-bezier(0, 0, 0.2, 1);
+	        animation: ripple 1.2s forwards cubic-bezier(0, 0, 0.2, 1);
 }
 
 @-webkit-keyframes ripple {
