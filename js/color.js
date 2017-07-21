@@ -31,11 +31,14 @@ onload = function() {
 					li.style.background = color;
 					list.appendChild(li);
 				}
-				var items = document.getElementsByTagName('li');
 				var dots = document.getElementsByClassName('dot');
-				for(var i = 0; i < items.length; i++) {
-					items[i].onmouseover = function() {
-						var bgcolor = this.style.background;
+				//事件委托
+				list.onmouseover = function(ev) {
+					var ev = ev || window.event;
+					var target = ev.target || ev.srcElement;
+					if(target.nodeName == 'LI') {
+						console.log(target);
+						var bgcolor = target.style.background;
 						content.style.background = bgcolor;
 						toTop.style.background = bgcolor;
 						for(var i = 0; i < dots.length; i++) {
@@ -43,6 +46,19 @@ onload = function() {
 						}
 					}
 				}
+//性能弱			
+// 				var items = document.getElementsByTagName('li');
+// 				var dots = document.getElementsByClassName('dot');
+// 				for(var i = 0; i < items.length; i++) {
+// 					items[i].onmouseover = function() {
+// 						var bgcolor = this.style.background;
+// 						content.style.background = bgcolor;
+// 						toTop.style.background = bgcolor;
+// 						for(var i = 0; i < dots.length; i++) {
+// 							dots[i].style.background = bgcolor;
+// 						}
+// 					}
+// 				}
 			}
 		}
 	}
